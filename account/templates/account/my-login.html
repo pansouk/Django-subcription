@@ -1,1 +1,10 @@
-<h1>My Login</h1>
+<html>
+<h1>Login</h1>
+
+<form method="POST" autocomplete="off">
+    {% csrf_token %}
+    {{ LoginForm.as_p}}
+    <input type="submit" value="Submit"/>
+</form>
+
+<html>
