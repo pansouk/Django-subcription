@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import CreateUserForm
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
@@ -31,10 +31,10 @@ def my_login(request):
             user = authenticate(request, username = username, password = password)
             if user is not None and user.is_writer == True:
                 login(request, user)
-                return HttpResponse('You are logged in as a writer!')
+                return redirect('writer-dashboard')
             if user is not None and user.is_writer == False:
                 login(request, user)
-                return HttpResponse('You are logged in as a reader!')
+                return redirect('client-dashboard')
                 
     context = {'LoginForm': form}
     return render(request, 'account/my-login.html', context)
