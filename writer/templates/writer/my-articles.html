@@ -1,0 +1,14 @@
+{% extends 'writer/navbar.html' %}
+
+{% block content %}
+<div class="container mt-5 p-4">
+    {% for article in articles %}
+    <h3>{{ article.title }}</h3>
+    {{ article.content }}
+
+    <br><br>
+    <strong>{{ article.date_posted }}</strong>
+    <div class="pb-4"></div>
+    {% endfor%}
+</div>
+{% endblock %}
