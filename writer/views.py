@@ -44,3 +44,14 @@ def update_article(request, pk):
         return render(request, 'writer/update-article.html', context)
     except:
         return redirect('my-articles')
+    
+@login_required(login_url="my-login")
+def delete_article(request, pk):
+    try:
+        article = Article.objects.get(id=pk, user=request.user)
+        if request.method == 'POST':
+            article.delete()
+            return redirect('my-articles')
+    except:
+        return redirect('my-articles')
+    return render(request, 'writer/delete-article.html')

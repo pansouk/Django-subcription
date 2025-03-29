@@ -10,6 +10,8 @@
     <strong>{{ article.date_posted }}</strong>
     <div class="pb-4"></div>
     <a href="{% url 'update-article' article.id %}">Update article</a>
+    <br/>
+    <a href="{% url 'delete-article' article.id %}">Delete article</a>
     {% endfor%}
 </div>
 {% endblock %}

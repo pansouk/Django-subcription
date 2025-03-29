@@ -1,0 +1,21 @@
+{% extends 'writer/navbar.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h3>Delete an article</h3>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+    <a hred="{% url 'my-articles' %}" class="btn btn-secondary">Return to my articles</a>
+
+</div>
+
+{% endblock %}
