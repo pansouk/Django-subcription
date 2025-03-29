@@ -1,0 +1,22 @@
+{% extends 'writer/navbar.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h3>Delete account</h3>
+    <p>You may delete your account bellow:</p>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+
+
+        <button type="submit" class="btn btn-danger">Delete account</button>
+    </form>
+
+    <a hred="{% url 'writer-dashboard' %}" class="btn btn-secondary">Return to dashboard</a>
+
+</div>
+
+{% endblock %}
