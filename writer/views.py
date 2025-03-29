@@ -32,12 +32,15 @@ def my_articles(request):
 
 @login_required(login_url="my-login")
 def update_article(request, pk):
-    article = Article.objects.get(id=pk)
-    form = ArticleForm(instance=article)
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, instance=article)
-        if form.is_valid():
-            form.save()
-            return redirect('my-articles')
-    context = {'form': form}
-    return render(request, 'writer/update-article.html', context)
+    try:
+        article = Article.objects.get(id=pk, user=request.user)
+        form = ArticleForm(instance=article)
+        if request.method == 'POST':
+            form = ArticleForm(request.POST, instance=article)
+            if form.is_valid():
+                form.save()
+                return redirect('my-articles')
+        context = {'form': form}
+        return render(request, 'writer/update-article.html', context)
+    except:
+        return redirect('my-articles')
