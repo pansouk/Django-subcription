@@ -5,12 +5,12 @@
 
 {% block content %}
 <div class="container bg-white shadow-md p-5 form-layout">
-    <h3>Update article</h3>
-    <p>Update your article below:</p>
+    <h3>Update account details</h3>
+    <p>You may update your account details below:</p>
     <form method="POST" autocomplete="off">
         {% csrf_token %}
         {{form|crispy}}
-        <button type="submit" class="btn btn-primary">Update article</button>
+        <button type="submit" class="btn btn-primary">Update account</button>
     </form>
 </div>
 {% endblock %}
