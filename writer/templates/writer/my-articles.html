@@ -1,16 +1,20 @@
-{% extends 'writer/navbar.html' %}
-
-{% block content %}
+{% extends 'writer/navbar.html' %} {% block content %}
 <div class="container mt-5 p-4">
     {% for article in articles %}
     <h3>{{ article.title }}</h3>
     {{ article.content }}
 
-    <br><br>
+    <br /><br />
     <strong>{{ article.date_posted }}</strong>
+    <hr />
+    {% if article.is_premium == True %} ⭐️
+    <strong>Premium</strong>
+    {% else%}
+    <strong>Standard</strong>
+    {% endif %}
     <div class="pb-4"></div>
     <a href="{% url 'update-article' article.id %}">Update article</a>
-    <br/>
+    <br />
     <a href="{% url 'delete-article' article.id %}">Delete article</a>
     {% endfor%}
 </div>
